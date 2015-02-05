@@ -1,0 +1,103 @@
+﻿@model TaskManager.DbModel.Task
+
+@{
+    ViewBag.Title = "CreateTask";
+}
+
+<style>
+    div {
+        margin:0;
+    }
+   div.Container {
+        background-color: #E0F8F7;
+        height :auto;
+        min-height: 900px;
+        margin : 0;
+        
+    }
+    </style>
+  <link rel="stylesheet" href='@Url.Content("~/Content//themes/smoothness/jquery-ui.css")'>
+<link rel="stylesheet" type="text/css" href='@Url.Content("~/Content/css/TableGrid.css")' />
+<script type="text/javascript" src='@Url.Content("~/Content/Scripts/jquery.js")'></script>
+<script type="text/javascript" src='@Url.Content("~/Content/Scripts/jquery.tablesorter.js")'></script>
+<script type="text/javascript" src='@Url.Content("~/Content/Scripts/jquery-1.7.1.js")'></script>
+<script type="text/javascript" src='@Url.Content("~/Content/Scripts/jquery-1.7.1.intellisense.js")'></script>
+<script type="text/javascript" src='@Url.Content("~/Content/Scripts/jquery-1.9.1.min.js")'></script>
+<script type="text/javascript" src='@Url.Content("~/Content/Scripts/jquery-ui.min.js")'></script>
+<div class="Container">
+<h2>Create Task</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Task</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Title)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Title)
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DueDate)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.DueDate, new { @class = "datepicker date" })
+            @Html.ValidationMessageFor(model => model.DueDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RequiredHours)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RequiredHours)
+            @Html.ValidationMessageFor(model => model.RequiredHours)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Priority)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model =>model.Priority,TaskManager.Controllers.HomeController.PriorityList)
+            @Html.ValidationMessageFor(model => model.Priority)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "ManageTasks")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.date').each(function () {
+            var date = new Date($(this).val());
+            $(this).val(date.toDateString());
+        });
+        $('.date').change(function () {
+          
+            date = new Date($(this).val());
+            $(this).val(date.toDateString());
+        });
+        $(".datepicker").datepicker({ dateFormat: 'mm/dd/yy', changeYear: false });
+    });
+</script></div>

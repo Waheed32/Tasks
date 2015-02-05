@@ -7,11 +7,30 @@ using System.Web.Mvc;
 using TaskManager.DbModel;
 using TaskManager.Helpers;
 using TaskManager.Models;
+using TaskManager.Models.Enums;
 
 namespace TaskManager.Controllers
 {
     public class HomeController : Controller
     {
+        public static List<SelectListItem> PriorityList
+        {
+            get
+            {
+                List<SelectListItem> enumList = new List<SelectListItem>();
+                foreach (Priorities data in Enum.GetValues(typeof(Priorities)))
+                {
+                    enumList.Add(new SelectListItem
+                    {
+                        Text = data.ToString().Replace("_", " "),
+                        Value = ((int)Enum.Parse(typeof(Priorities), data.ToString())).ToString(),
+
+                    });
+                }
+
+                return enumList;
+            }
+        }
         //
         // GET: /Home/
         [HttpGet]
@@ -41,7 +60,18 @@ namespace TaskManager.Controllers
             return RedirectToAction("ManageTasks");
         }
 
-        
+        [HttpGet]
+        public ActionResult CreateTask()
+        {
+            return View( new Task());
+        }
+
+        [HttpPost]
+        public ActionResult CreateTask(Task task)
+        {
+            DbHelper.AddTask(task);
+            return RedirectToAction("ManageTasks");
+        }
 
         private List<TaskModel> GetTaskModelFromTasks(List<Task> tasks)
         {

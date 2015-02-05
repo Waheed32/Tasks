@@ -26,6 +26,7 @@ namespace TaskManager.Models
                     {
                         Text = data.ToString().Replace("_", " "),
                         Value = ((int)Enum.Parse(typeof(Priorities), data.ToString())).ToString(),
+                        
                         Selected = (int)Enum.Parse(typeof(Priorities), data.ToString()) == this.Task.Priority
                     });
                 }

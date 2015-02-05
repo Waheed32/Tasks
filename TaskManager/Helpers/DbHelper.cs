@@ -36,5 +36,14 @@ namespace TaskManager.Helpers
                 db.SaveChanges();
             }
         }
+
+        public static void AddTask(Task task)
+        {
+            using (var db = new TaskManagerEntities())
+            {
+                 db.Tasks.Add(task);
+                 db.SaveChanges();
+            }
+        }
     }
 }

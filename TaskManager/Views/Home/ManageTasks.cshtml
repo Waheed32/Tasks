@@ -126,6 +126,8 @@
             <tr>
                 <td colspan="14">
                     <input type="submit" id="submitSubmit"  style="width:70px; align-content:center; align-items:center; height:40px; margin-top:15px;" class="savebtn" value="  Apply " onclick="return confirmApply();" />
+                    <input type="button" id="btn"   value="Create New Task" onclick="NavigateToNewTask();" />
+                    <label id="warn" hidden="hidden" style="color:red">You will need to apply for the chages to take effect</label>
                 </td>
             </tr>
         </tfoot>
@@ -133,12 +135,18 @@
     </div>  
     <script type="text/javascript">
 
+        function NavigateToNewTask()
+        {
+            document.location.href = '@Url.Action("CreateTask")';
+        }
+
         function HideRowAndSetForDeletion(element)
         {
             var ele = element.parentNode.parentElement.getElementsByClassName("isDeleted");
             ele[0].value = true;
             var tr = element.parentNode.parentElement;
             $(tr).hide();
+            $('#warn').show();
         }
         function SetModified(element) {
             var ele = element.parentNode.parentElement.getElementsByClassName("isModified");

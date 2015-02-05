@@ -31,3 +31,36 @@ C:\Users\Weedi\Documents\Visual Studio 2012\Projects\TaskManager\TaskManager\bin
 C:\Users\Weedi\Documents\Visual Studio 2012\Projects\TaskManager\TaskManager\bin\WebGrease.dll
 C:\Users\Weedi\Documents\Visual Studio 2012\Projects\TaskManager\TaskManager\bin\Antlr3.Runtime.pdb
 C:\Users\Weedi\Documents\Visual Studio 2012\Projects\TaskManager\TaskManager\bin\System.Web.Optimization.xml
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\bin\TaskManager.dll
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\bin\TaskManager.pdb
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\bin\Antlr3.Runtime.dll
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\bin\EntityFramework.dll
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\bin\Newtonsoft.Json.dll
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\bin\System.Net.Http.Formatting.dll
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\bin\System.Web.Helpers.dll
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\bin\System.Web.Http.dll
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\bin\System.Web.Http.WebHost.dll
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\bin\System.Web.Mvc.dll
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\bin\System.Web.Optimization.dll
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\bin\System.Web.Razor.dll
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\bin\System.Web.WebPages.dll
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\bin\System.Web.WebPages.Razor.dll
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\bin\WebGrease.dll
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\bin\Antlr3.Runtime.pdb
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\bin\EntityFramework.xml
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\bin\Newtonsoft.Json.xml
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\bin\System.Web.Optimization.xml
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\bin\System.Net.Http.Formatting.xml
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\bin\System.Web.Helpers.xml
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\bin\System.Web.Http.xml
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\bin\System.Web.Http.WebHost.xml
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\bin\System.Web.Mvc.xml
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\bin\System.Web.Razor.xml
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\bin\System.Web.WebPages.xml
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\bin\System.Web.WebPages.Razor.xml
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\obj\Debug\TaskManager.csprojResolveAssemblyReference.cache
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\obj\Debug\TaskManager.dll
+C:\Users\Weedi\Documents\GitHub\Tasks\TaskManager\obj\Debug\TaskManager.pdb
