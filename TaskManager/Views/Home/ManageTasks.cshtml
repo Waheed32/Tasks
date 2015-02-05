@@ -1,0 +1,177 @@
+﻿@model List<TaskManager.Models.TaskModel>
+@{
+    ViewBag.Title = "ManageTasks";
+}
+
+<style>
+    div {
+        margin:0;
+    }
+   div.Container {
+        background-color: #E0F8F7;
+        height :auto;
+        min-height: 900px;
+        margin : 0;
+        
+    }
+        div.title h2 {
+            color:#380B61;
+            text-align: center;
+            
+        }
+    lable {
+        font:bold;
+    }
+    div.chart {
+        width:70%;
+        margin-left:20%;
+    }
+    </style>
+<div class="Container">
+    <div class="title">
+<h2>Manage Tasks</h2>
+        </div>
+@*    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")*@
+    <link rel="stylesheet" href='@Url.Content("~/Content//themes/smoothness/jquery-ui.css")'>
+<link rel="stylesheet" type="text/css" href='@Url.Content("~/Content/css/TableGrid.css")' />
+<script type="text/javascript" src='@Url.Content("~/Content/Scripts/jquery.js")'></script>
+<script type="text/javascript" src='@Url.Content("~/Content/Scripts/jquery.tablesorter.js")'></script>
+<script type="text/javascript" src='@Url.Content("~/Content/Scripts/jquery-1.7.1.js")'></script>
+<script type="text/javascript" src='@Url.Content("~/Content/Scripts/jquery-1.7.1.intellisense.js")'></script>
+<script type="text/javascript" src='@Url.Content("~/Content/Scripts/jquery-1.9.1.min.js")'></script>
+<script type="text/javascript" src='@Url.Content("~/Content/Scripts/jquery-ui.min.js")'></script>
+
+
+
+@using (Html.BeginForm())
+{
+    @*<div style="width: 100%">
+        <div style="float: left">
+            <span style="margin-right: 5px">
+                <b>Search: </b>
+            </span>
+            @Html.DropDownList("upnSuffix", (IEnumerable<SelectListItem>)@ViewBag.UPNSuffixes, new { onchange = "changeUpnSuffix();" })
+        </div>
+       
+       
+    </div>*@
+    
+    if (ViewBag.ShowSuccessMessage != null && ViewBag.ShowSuccessMessage)
+            {
+    <span class="successMessage">Changes applied successfully.</span> 
+            }
+            <table style="width:30%; text-align:center"> <tr><td>
+                <label>Select view Type</label>
+                </td>
+                <td>
+                    <label>
+    <input type="radio" id="tabler" checked="checked" name ="view" value="1" /> Table</label>
+                       </td>
+                <td>
+                     <label>
+    <input type="radio" id="chartr" name ="view" value="2" /> Chart</label>
+                </td></tr></table>
+            
+    @Html.ValidationSummary(true)
+    
+    <div id="chart" class="chart">
+
+   
+    <img src="@Url.Action("SetUpChartView", "Home")" />
+      </div> 
+    <div id="table">
+    <table id="box-table-a" class="users-table">
+        <thead>
+            <tr>
+                <th style="width: 35px; text-align: center">No.</th>
+                <th class="gridSortHeader">Title</th>
+                <th class="gridSortHeader">Due Date</th>
+                <th class="gridSortHeader">Hours Required</th>
+                <th class="gridSortHeader">Priority</th>
+                <th class="gridSortHeader"></th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.Count(); i++)
+            {
+                <tr  >
+                    <td style="text-align: center" id="userNotd">
+                        @Html.DisplayFor(x => Model[i].ExDisplayNo)
+                        @Html.HiddenFor(x => Model[i].Task.TaskId)
+                        @Html.HiddenFor(x => Model[i].IsModified, new { @class="isModified" })
+                        @Html.HiddenFor(x=> Model[i].IsDleted, new { @class="isDeleted" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => Model[i].Task.Title, new {onchange="SetModified(this)" })
+                    </td>
+                    <td>
+                       @Html.TextBoxFor(model =>Model[i].Task.DueDate, new {onchange="SetModified(this)" , @class = "datepicker date" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => Model[i].Task.RequiredHours, new { onchange="SetModified(this)" ,type="Number" })
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(model =>Model[i].Task.Priority,Model[i].PriorityList, new {onchange="SetModified(this)" })
+                    </td>
+                   <td>
+                       <a  href="#" onclick="HideRowAndSetForDeletion(this)"> Delete</a>
+                   </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="14">
+                    <input type="submit" id="submitSubmit"  style="width:70px; align-content:center; align-items:center; height:40px; margin-top:15px;" class="savebtn" value="  Apply " onclick="return confirmApply();" />
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    </div>  
+    <script type="text/javascript">
+
+        function HideRowAndSetForDeletion(element)
+        {
+            var ele = element.parentNode.parentElement.getElementsByClassName("isDeleted");
+            ele[0].value = true;
+            var tr = element.parentNode.parentElement;
+            $(tr).hide();
+        }
+        function SetModified(element) {
+            var ele = element.parentNode.parentElement.getElementsByClassName("isModified");
+            ele[0].value = true;
+           
+        }
+        $('#chartr').change(function () {
+            $('#chart').show();
+            $('#table').hide();
+        });
+        $('#tabler').change(function () {
+            $('#table').show();
+            $('#chart').hide();
+        });
+        $(document).ready(function () {
+            $('.date').each(function ()
+            {
+               var date = new Date($(this).val());
+                $(this).val(date.toDateString());
+            });
+            $('.date').change(function ()
+            {
+                SetModified(this);
+                date = new Date($(this).val());
+                $(this).val(date.toDateString());
+            });
+            $(".datepicker").datepicker({ dateFormat: 'mm/dd/yy', changeYear: false });
+            $('#table').show();
+            $('#chart').hide();
+
+        });
+        
+        
+    </script>
+}
+    </div>
