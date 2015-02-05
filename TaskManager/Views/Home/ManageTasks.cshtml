@@ -135,6 +135,14 @@
     </div>  
     <script type="text/javascript">
 
+        function confirmApply()
+        {
+            if (confirm("Are you sure to apply."))
+            {
+                return true;
+            }
+            return false;
+        }
         function NavigateToNewTask()
         {
             document.location.href = '@Url.Action("CreateTask")';
